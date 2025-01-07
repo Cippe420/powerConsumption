@@ -1,0 +1,1193 @@
+Inizio stress test: Wed 11 Dec 13:23:30 CET 2024
+Stress test avviato con PID 6109
+-----------------------------
+Timestamp: Wed 11 Dec 13:23:30 CET 2024
+Temperatura: 44.3'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:23:35 CET 2024
+Temperatura: 47.2'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:23:40 CET 2024
+Temperatura: 49.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:23:52 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:24:10 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:24:25 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:24:30 CET 2024
+Temperatura: 52.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:24:36 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:24:41 CET 2024
+Temperatura: 53.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:24:54 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:25:17 CET 2024
+Temperatura: 53.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:25:31 CET 2024
+Temperatura: 54.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:25:47 CET 2024
+Temperatura: 53.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:26:10 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:26:15 CET 2024
+Temperatura: 54.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:26:30 CET 2024
+Temperatura: 54.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:26:35 CET 2024
+Temperatura: 54.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:26:51 CET 2024
+Temperatura: 55.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:15 CET 2024
+Temperatura: 55.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:25 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:38 CET 2024
+Temperatura: 55.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:44 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:49 CET 2024
+Temperatura: 55.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:54 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:27:59 CET 2024
+Temperatura: 56.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:28:04 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:28:10 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:28:15 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:28:20 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:28:25 CET 2024
+Temperatura: 57.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Wed 11 Dec 13:28:32 CET 2024
+Inizio stress test: Wed 11 Dec 13:57:18 CET 2024
+Stress test avviato con PID 6767
+-----------------------------
+Timestamp: Wed 11 Dec 13:57:18 CET 2024
+Temperatura: 44.8'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:57:23 CET 2024
+Temperatura: 48.2'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:57:34 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:57:44 CET 2024
+Temperatura: 50.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:57:50 CET 2024
+Temperatura: 50.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:58:04 CET 2024
+Temperatura: 51.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 13:58:09 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Inizio stress test: Wed 11 Dec 17:45:48 CET 2024
+Stress test avviato con PID 1269
+-----------------------------
+Timestamp: Wed 11 Dec 17:45:48 CET 2024
+Temperatura: 46.2'C
+Frequenza CPU: 1100 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:45:54 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:45:59 CET 2024
+Temperatura: 57.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:04 CET 2024
+Temperatura: 58.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:12 CET 2024
+Temperatura: 61.3'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:23 CET 2024
+Temperatura: 64.2'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:31 CET 2024
+Temperatura: 65.7'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:40 CET 2024
+Temperatura: 66.7'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:46 CET 2024
+Temperatura: 67.2'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:51 CET 2024
+Temperatura: 67.2'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:46:56 CET 2024
+Temperatura: 68.1'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:06 CET 2024
+Temperatura: 69.6'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:12 CET 2024
+Temperatura: 70.6'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:17 CET 2024
+Temperatura: 70.6'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:22 CET 2024
+Temperatura: 70.1'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:32 CET 2024
+Temperatura: 71.1'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:37 CET 2024
+Temperatura: 71.5'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:45 CET 2024
+Temperatura: 73.0'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:47:56 CET 2024
+Temperatura: 73.5'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:06 CET 2024
+Temperatura: 74.0'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:19 CET 2024
+Temperatura: 76.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:25 CET 2024
+Temperatura: 76.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:34 CET 2024
+Temperatura: 75.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:39 CET 2024
+Temperatura: 75.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:44 CET 2024
+Temperatura: 75.0'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:48:53 CET 2024
+Temperatura: 75.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:01 CET 2024
+Temperatura: 78.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:09 CET 2024
+Temperatura: 77.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:14 CET 2024
+Temperatura: 77.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:19 CET 2024
+Temperatura: 78.8'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:24 CET 2024
+Temperatura: 77.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:29 CET 2024
+Temperatura: 77.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:34 CET 2024
+Temperatura: 77.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:39 CET 2024
+Temperatura: 78.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:44 CET 2024
+Temperatura: 76.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:50 CET 2024
+Temperatura: 78.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:49:55 CET 2024
+Temperatura: 78.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:00 CET 2024
+Temperatura: 78.8'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:05 CET 2024
+Temperatura: 79.3'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:10 CET 2024
+Temperatura: 79.8'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:21 CET 2024
+Temperatura: 80.3'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:29 CET 2024
+Temperatura: 79.8'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:34 CET 2024
+Temperatura: 79.8'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Wed 11 Dec 17:50:42 CET 2024
+Temperatura: 80.3'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Wed 11 Dec 17:51:05 CET 2024
+Inizio stress test: Thu 12 Dec 14:36:00 CET 2024
+Stress test avviato con PID 1452
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:00 CET 2024
+Temperatura: 43.3'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:05 CET 2024
+Temperatura: 45.2'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:10 CET 2024
+Temperatura: 46.2'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:20 CET 2024
+Temperatura: 48.7'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:25 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:30 CET 2024
+Temperatura: 49.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:35 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:41 CET 2024
+Temperatura: 50.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:46 CET 2024
+Temperatura: 50.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:36:56 CET 2024
+Temperatura: 51.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:03 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:11 CET 2024
+Temperatura: 52.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:21 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:26 CET 2024
+Temperatura: 53.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:31 CET 2024
+Temperatura: 53.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:37 CET 2024
+Temperatura: 53.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:42 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:53 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:37:58 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 14:38:21 CET 2024
+Inizio stress test: Thu 12 Dec 14:42:38 CET 2024
+Stress test avviato con PID 2225
+-----------------------------
+Timestamp: Thu 12 Dec 14:42:38 CET 2024
+Temperatura: 48.2'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:42:49 CET 2024
+Temperatura: 51.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:42:54 CET 2024
+Temperatura: 51.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:42:59 CET 2024
+Temperatura: 51.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:43:04 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:43:12 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:43:19 CET 2024
+Temperatura: 53.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:43:24 CET 2024
+Temperatura: 54.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:43:29 CET 2024
+Temperatura: 55.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 14:43:34 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 14:43:50 CET 2024
+Inizio stress test: Thu 12 Dec 15:39:19 CET 2024
+Stress test avviato con PID 4546
+-----------------------------
+Timestamp: Thu 12 Dec 15:39:19 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:39:24 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:39:29 CET 2024
+Temperatura: 52.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:39:36 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:39:46 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:39:58 CET 2024
+Temperatura: 55.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:40:08 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:40:13 CET 2024
+Temperatura: 56.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:40:18 CET 2024
+Temperatura: 56.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 15:40:44 CET 2024
+Inizio stress test: Thu 12 Dec 15:42:21 CET 2024
+Stress test avviato con PID 4847
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:21 CET 2024
+Temperatura: 49.6'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:26 CET 2024
+Temperatura: 53.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:31 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:36 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:42 CET 2024
+Temperatura: 55.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:48 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:42:58 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:43:06 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:43:11 CET 2024
+Temperatura: 57.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:43:28 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:43:37 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:43:43 CET 2024
+Temperatura: 59.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:43:56 CET 2024
+Temperatura: 58.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:44:01 CET 2024
+Temperatura: 60.8'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:44:06 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:44:13 CET 2024
+Temperatura: 59.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:44:19 CET 2024
+Temperatura: 60.3'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 15:44:50 CET 2024
+Inizio stress test: Thu 12 Dec 15:45:49 CET 2024
+Stress test avviato con PID 5279
+-----------------------------
+Timestamp: Thu 12 Dec 15:45:49 CET 2024
+Temperatura: 52.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:45:54 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:05 CET 2024
+Temperatura: 57.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:10 CET 2024
+Temperatura: 56.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:15 CET 2024
+Temperatura: 57.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:24 CET 2024
+Temperatura: 58.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:29 CET 2024
+Temperatura: 58.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:37 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:42 CET 2024
+Temperatura: 59.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:48 CET 2024
+Temperatura: 58.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:53 CET 2024
+Temperatura: 59.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:46:58 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:07 CET 2024
+Temperatura: 60.3'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:13 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:18 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:23 CET 2024
+Temperatura: 59.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:28 CET 2024
+Temperatura: 60.8'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:33 CET 2024
+Temperatura: 60.3'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:40 CET 2024
+Temperatura: 61.3'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:47:49 CET 2024
+Temperatura: 60.8'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 15:48:14 CET 2024
+Inizio stress test: Thu 12 Dec 15:49:54 CET 2024
+Stress test avviato con PID 5785
+-----------------------------
+Timestamp: Thu 12 Dec 15:49:54 CET 2024
+Temperatura: 52.1'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:06 CET 2024
+Temperatura: 64.2'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:11 CET 2024
+Temperatura: 66.7'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:16 CET 2024
+Temperatura: 68.1'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:26 CET 2024
+Temperatura: 70.6'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:31 CET 2024
+Temperatura: 70.1'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:37 CET 2024
+Temperatura: 71.5'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:43 CET 2024
+Temperatura: 72.5'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:48 CET 2024
+Temperatura: 72.5'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:53 CET 2024
+Temperatura: 73.0'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:50:59 CET 2024
+Temperatura: 73.0'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:07 CET 2024
+Temperatura: 75.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:12 CET 2024
+Temperatura: 76.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:17 CET 2024
+Temperatura: 75.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:23 CET 2024
+Temperatura: 75.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:29 CET 2024
+Temperatura: 77.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:36 CET 2024
+Temperatura: 77.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:42 CET 2024
+Temperatura: 77.4'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 15:51:54 CET 2024
+Temperatura: 77.9'C
+Frequenza CPU: 1500 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 15:52:32 CET 2024
+Inizio stress test: Thu 12 Dec 16:54:57 CET 2024
+Stress test avviato con PID 6630
+-----------------------------
+Timestamp: Thu 12 Dec 16:54:57 CET 2024
+Temperatura: 50.1'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:02 CET 2024
+Temperatura: 53.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:08 CET 2024
+Temperatura: 54.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:13 CET 2024
+Temperatura: 55.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:19 CET 2024
+Temperatura: 55.5'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:24 CET 2024
+Temperatura: 55.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:29 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:34 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:39 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:45 CET 2024
+Temperatura: 56.0'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:55:59 CET 2024
+Temperatura: 57.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:05 CET 2024
+Temperatura: 57.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:14 CET 2024
+Temperatura: 57.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:19 CET 2024
+Temperatura: 58.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:24 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:29 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:41 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:46 CET 2024
+Temperatura: 59.4'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+-----------------------------
+Timestamp: Thu 12 Dec 16:56:56 CET 2024
+Temperatura: 58.9'C
+Frequenza CPU: 600 MHz
+Throttled: 0x0
+-----------------------------
+Stress test completato: Thu 12 Dec 16:57:18 CET 2024
