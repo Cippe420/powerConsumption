@@ -18,9 +18,9 @@ echo 600000 | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_min_freq
 
 echo "Going to sleep, bye bye u.u"
 
-sudo ifconfig wlan0 down
-echo "check if still receiveing in the db"
-echo "i will sleep for 1h"
-sleep 1h
-sudo ifconfig wlan0 up
+#sudo ifconfig wlan0 down
+#echo "check if still receiveing in the db"
+#echo "i will sleep for 1h"
+#sleep 1h
+#sudo ifconfig wlan0 up
 echo "Done!"

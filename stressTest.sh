@@ -4,18 +4,22 @@
 LOGFILE="stress_test.log"
 
 # Durata del test in secondi
-TEST_DURATION=120
+TEST_DURATION=180
 
 # Intervallo di logging (in secondi)
 LOG_INTERVAL=5
+
+# Percentuale di stress
+STRESS_PERCENTAGE=15
 
 start_stress_test() {
     echo "Inizio stress test: $(date)" | tee -a "$LOGFILE"
 
     # Esegui stress test su CPU, RAM e I/O in background
-    stress-ng --cpu 4 --vm 2 --vm-bytes 75% --hdd 2 --hdd-bytes 2G --timeout "$TEST_DURATION" &
+    stress-ng --cpu 4 --vm 2 --vm-bytes $STRESS_PERCENTAGE% --hdd 2 --hdd-bytes 2G --timeout "$TEST_DURATION" &
     STRESS_PID=$! # Salva il PID del processo
-    echo "Stress test avviato con PID $STRESS_PID" | tee -a "$LOGFILE"
+    STRESS_PERCENTAGE+=20
+    echo "Stress test avviato con PID $STRESS_PID e percentuale $STRESS_PERCENTAGE" | tee -a "$LOGFILE"
 }
 
 log_system_stats() {
@@ -53,6 +57,21 @@ main() {
 
     # Attendi il completamento dello stress test
     wait $STRESS_PID
+
+    # stress al 35%
+    start_stress_test
+    wait $STRESS_PID
+
+    # stress al 55%
+    start_stress_test
+
+    wait $STRESS_PID
+    # stress al 75%
+    start_stress_test
+    wait $STRESS_PID
+
+
+
     echo "Stress test completato: $(date)" | tee -a "$LOGFILE"
 
     sudo ifconfig wlan0 up
