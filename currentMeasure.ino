@@ -1,4 +1,6 @@
-#define CURRENT_SENSOR_PIN A0
+
+int CURRENT_SENSOR_PIN = A0;
+
 
 void setup()
 {
@@ -21,3 +23,4 @@ void loop()
     Serial.print(AvgAcs);
     delay(100);
 }
+
