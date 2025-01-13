@@ -1,6 +1,4 @@
-
 int CURRENT_SENSOR_PIN = A0;
-
 
 void setup()
 {
