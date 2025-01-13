@@ -1,6 +1,7 @@
 // C library headers
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 // Linux headers
 #include <fcntl.h> // Contains file controls like O_RDWR
@@ -36,12 +37,12 @@ int main()
     if (tcgetattr(serial_port, &tty) != 0)
     {
         printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
+        return EIO;
     }       
     
     /*
     eventually change settings
     */
-
 
     // with everything set, read and write into port it's possible
 
@@ -57,9 +58,15 @@ int main()
 
     }
 
-    // cast value to float (?)
-
+    // cast value to float (?) , is it watts?
     
+
+
+    close(serial_port);
+
+    return 0;
+
+
 
 
 }
