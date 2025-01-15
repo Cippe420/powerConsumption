@@ -1,26 +1,19 @@
 import serial
-import time
-
-
+import datetime
 
 def main():
 
-    # Open serial port
-    ser = serial.Serial('/dev/ttyUSB0', 9600)
-
-    off = False
-    while(not off):
-
-        # Read serial data
-        data = ser.readline().decode('utf-8').strip()
-
-        # save the data into a csv file (cpuPercentage,watt,ampere)
-        with open('currentMeasure.csv', 'a') as f:
-            f.write(data + '\n')
-
-        # Check if the data is the end signal
-        if data == 'end':
-            off = True
+    try:
+        while True:
+            istante = datetime.datetime.now()
+            # Open serial port and read data
+            ser = serial.Serial('/dev/ttyUSB0', 9600)
+            data = ser.readline().decode('utf-8').rstrip()
+            # Print data
+            with open('currentMeasure.csv', 'a') as file:
+                file.write(str(istante) + ',' + data + '\n')
+    except KeyboardInterrupt:
+        ser.close()
 
     return
 
