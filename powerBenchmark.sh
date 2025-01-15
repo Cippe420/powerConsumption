@@ -1,12 +1,12 @@
 #!/bin/bash
 main ()
 {
-	for i in {20..80..10}
-	do
-		echo "sto stressando $i%"
-		stress-ng -c 0 -l $i -t 60s
+	#python3 currentMeasure.py &
+	touch cpuPower.txt
+	for i in {20..80..10}; do
+		echo $i > cpuPower.txt
+		stress-ng -c 0 -l $i -t 20s
 	done
-	rm log.txt
-	touch log.txt
+	echo 'stop' > cpuPower.txt
 }
 main
