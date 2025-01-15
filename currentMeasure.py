@@ -1,5 +1,5 @@
 import serial
-import datetime
+import matplotlib.pyplot as plt
 
 def main():
 
@@ -27,10 +27,13 @@ def main():
                 else:
                     measurements[istante] = (measurements[istante][0] + float(datalist[1]) , measurements[istante][1] +float(datalist[3][1::]),measurements[istante][2]+1)
 
+    averageM = []
 
     for el in measurements:
-        print('wattaggio medio: ',measurements[el][1]/measurements[el][2])
-        print('amperaggio medio: ' , measurements[el][0]/measurements[el][2])
+        averageM.append((el,measurements[el][0]/measurements[el][2],measurements[el][1]/measurements[el][2]))
+
+    print(averageM)
+
     return
 
 
