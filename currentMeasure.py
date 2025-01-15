@@ -34,6 +34,31 @@ def main():
 
     print(averageM)
 
+    percentualeCpu = [el[0] for el in averageM]
+    amperaggio = [el[1] for el in averageM]
+    wattaggio = [el[2] for el in averageM]
+
+    # Creazione del grafico
+    plt.figure(figsize=(10, 6))
+
+    # Tracciare i dati
+    plt.plot(percentualeCpu, amperaggio, label="Amperaggio (A)", marker="o", color="blue")
+    plt.plot(percentualeCpu, wattaggio, label="Wattaggio (W)", marker="s", color="red")
+
+    # Etichette e titolo
+    plt.title("Andamento di Amperaggio e Wattaggio in funzione della CPU", fontsize=16)
+    plt.xlabel("Percentuale di utilizzo CPU (%)", fontsize=14)
+    plt.ylabel("Valori Istantanei", fontsize=14)
+    plt.grid(True, linestyle="--", alpha=0.7)
+
+    # Aggiungere una legenda
+    plt.legend(fontsize=12)
+
+    # Mostrare il grafico
+    # Salva il grafico
+    plt.savefig("grafico_cpu.png", dpi=300, bbox_inches="tight") 
+
+
     return
 
 
