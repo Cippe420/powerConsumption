@@ -5,38 +5,54 @@ def main():
 
     measurements={}
 
-    with open('currentMeasure.csv','w') as f:
-        f.write('')
-    while True:
-        # Open serial port and read data
-        ser = serial.Serial('/dev/ttyUSB0', 9600)
-        data = ser.readline().decode('utf-8').rstrip()
+    # with open('currentMeasure.csv','w') as f:
+    #     f.write('')
+    # while True:
+    #     # Open serial port and read data
+    #     ser = serial.Serial('/dev/ttyUSB0', 9600)
+    #     data = ser.readline().decode('utf-8').rstrip()
 
-        datalist = data.split()
+    #     datalist = data.split()
 
-        with open('cpuPower.txt','r') as f:
-            istante = f.read().strip()
-        if istante == 'stop':
-            break
-        else:   
-            # Print data
-            with open('currentMeasure.csv', 'a') as file:
-                file.write(istante + ', ' + datalist[1] +','+ datalist[3][1::] + '\n')
-                if istante not in measurements:
-                    measurements[istante] = (float(datalist[1]),float(datalist[3][1::]),1)
-                else:
-                    measurements[istante] = (measurements[istante][0] + float(datalist[1]) , measurements[istante][1] +float(datalist[3][1::]),measurements[istante][2]+1)
+    #     with open('cpuPower.txt','r') as f:
+    #         istante = f.read().strip()
+    #     if istante == 'stop':
+    #         break
+    #     else:   
+    #         # Print data
+    #         with open('currentMeasure.csv', 'a') as file:
+    #             file.write(istante + ', ' + datalist[1] +','+ datalist[3][1::] + '\n')
+    #             if istante not in measurements:
+    #                 measurements[istante] = (float(datalist[1]),float(datalist[3][1::]),1)
+    #             else:
+    #                 measurements[istante] = (measurements[istante][0] + float(datalist[1]) , measurements[istante][1] +float(datalist[3][1::]),measurements[istante][2]+1)
 
-    averageM = []
+    percentualeCpu = []
+    amperaggio = []
+    wattaggio = []
 
-    for el in measurements:
-        averageM.append((el,measurements[el][0]/measurements[el][2],measurements[el][1]/measurements[el][2]))
+    with open('currentMeasure.csv','r') as f:
+        for line in f:
+            datalist = line.split(',')
+            percentualeCpu.append(float(datalist[0]))
+            amperaggio.append(float(datalist[1]))
+            wattaggio.append(float(datalist[2]))
 
-    print(averageM)
+    #         if datalist[0] not in measurements:
+    #             measurements[datalist[0]] = (float(datalist[1]),float(datalist[2]),1)
+    #         else:
+    #             measurements[datalist[0]] = (measurements[datalist[0]][0] + float(datalist[1]) , measurements[datalist[0]][1] +float(datalist[2]),measurements[datalist[0]][2]+1)
 
-    percentualeCpu = [el[0] for el in averageM]
-    amperaggio = [el[1] for el in averageM]
-    wattaggio = [el[2] for el in averageM]
+    # averageM = []
+
+    # for el in measurements:
+    #     averageM.append((el,measurements[el][0]/measurements[el][2],measurements[el][1]/measurements[el][2]))
+
+    # print(averageM)
+
+    # percentualeCpu = [el[0] for el in averageM]
+    # amperaggio = [el[1] for el in averageM]
+    # wattaggio = [el[2] for el in averageM]
 
     # Creazione del grafico
     plt.figure(figsize=(10, 6))
