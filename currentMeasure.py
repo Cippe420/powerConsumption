@@ -23,12 +23,12 @@ ax.set_title('Power Consumption')
 ax.set_xlabel('Time')
 ax.set_ylabel('Power (W)')
 
-index = 0 
+serial_port = serial.Serial('/dev/ttyUSB0', 9600)
 
 while True:
     try:
-        new_value = data[index%17].split()[3][1::]
-        index += 1
+        sLine = serial_port.readline().decode('utf-8')
+        new_value = sLine.split()[3][1:]
         watts.append(float(new_value))
         if len(watts) > 100:
             watts = watts[-100:]
