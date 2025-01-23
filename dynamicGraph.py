@@ -87,8 +87,8 @@ def update(frame):
         for i in range(len(riga)):
             cpuN[i].append(float(riga[i].split()[1][0:-1]))
             lastSeen = [cpuN[i][-1] for i in range(4)]        
-    watts.append(new_watt)
-    amps.append(new_amp)
+    watts.append(float(new_watt))
+    amps.append(float(new_amp))
     if len(watts) > 100:
         watts.pop(0)
         amps.pop(0)

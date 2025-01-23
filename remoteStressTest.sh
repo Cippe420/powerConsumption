@@ -1,12 +1,16 @@
 #!/bin/bash
-processes=()
 main()
 {
+    processes=()
     rm cpuPower.txt
     touch cpuPower.txt
+
     python3 dynamicGraph.py -o out.csv -s summary.csv -v &
+    # args are the ip address of the remote machine
+
     processes+=($!)
-    ssh pi@raspberrypi42.local 'python3 -u powerConsumption/pwr.py' >> cpuPower.txt &
+
+    ssh $1 'python3 -u powerConsumption/pwr.py' >> cpuPower.txt &
     processes+=($!)
     # wait on input
     for i in "${processes[@]}"; do
@@ -30,5 +34,4 @@ main()
     done
 
 }
-
-main
+main $1
