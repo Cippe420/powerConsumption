@@ -5,8 +5,8 @@ def parse_cpu_times(lines):
     cpu_times = {}
     for line in lines:
         parts = line.split()
-        if parts[0].startswith("cpu"):  # Considera solo le righe delle CPU
-            cpu_name = parts[0]  # Esempio: 'cpu', 'cpu0', 'cpu1', ecc.
+        if parts[0].startswith("cpu"):  
+            cpu_name = parts[0]
             cpu_times[cpu_name] = list(map(int, parts[1:]))
     return cpu_times
 
@@ -15,7 +15,7 @@ def calculate_cpu_usage(prev, curr):
     usage = {}
     for cpu_name in curr.keys():
         if cpu_name not in prev:
-            continue  # Salta se non ci sono dati precedenti per la CPU
+            continue 
 
         prev_idle = prev[cpu_name][3] + prev[cpu_name][4]
         curr_idle = curr[cpu_name][3] + curr[cpu_name][4]
@@ -41,7 +41,7 @@ def main():
         return
 
     while True:
-        time.sleep(1)  # Intervallo di campionamento
+        time.sleep(1)  
         curr_cpu_times = read_cpu_times()
         if not curr_cpu_times:
             return

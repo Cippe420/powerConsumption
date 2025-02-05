@@ -4,6 +4,7 @@ import numpy as np
 import serial
 import argparse
 import signal
+from datetime import datetime as timer
 
 with open('cpuPower.txt','w') as f:
     pass
@@ -17,8 +18,14 @@ args= parser.parse_args()
 visual_mode = args.visual
 output_file = args.output
 summary_file = args.summary
+totalWatts=[]
+totalAmps=[]
+totalCpuPower = [[],[],[],[]]
+
+starting_time = timer.now()
 
 def signal_handler(sig,frame):
+    end_time = timer.now()
     summary,sx = plt.subplots(2,2)
     sx[0,0].set_xlim(0,len(watts))
     sx[0,0].set_ylim(0,20)
@@ -40,6 +47,18 @@ def signal_handler(sig,frame):
     sx[1,0].set_ylabel('%')
     plt.legend()
     plt.savefig('summary.png')
+
+    with open(summary_file,'w') as f: 
+        print("aperto il file csv")
+        f.write(f'Starting time: {starting_time}\n')
+        f.write(f'Ending time: {end_time}\n')
+        f.write(f'Elapsed time: {end_time-starting_time}\n')
+        f.write(f'Average Wattage: {sum(totalWatts)/len(totalWatts)}\n')
+        f.write(f'Average Amperes: {sum(totalAmps)/len(totalAmps)}\n')
+        for i in range(4):
+            f.write(f'Average CPU {i} Power: {sum(totalCpuPower[i])/len(totalCpuPower[i])}\n')
+        
+
     exit(0)
     
 signal.signal(signal.SIGINT,signal_handler)
@@ -87,25 +106,30 @@ def update(frame):
         if riga != []:            
             for i in range(len(riga)):
                 cpuN[i].append(float(riga[i].split()[1][0:-1]))
-                lastSeen = [cpuN[i][-1] for i in range(4)]                  
+                lastSeen = [cpuN[i][-1] for i in range(4)] 
+                totalCpuPower[i].append(float(riga[i].split()[1][0:-1]))
+                
             for bar, value in zip(bars, lastSeen):
                 bar.set_height(value)
     watts.append(float(new_watt))
     amps.append(float(new_amp))
+    totalWatts.append(float(new_watt))
+    totalAmps.append(float(new_amp))
+
     if len(watts) > 100:
         watts.pop(0)
         amps.pop(0)
     line1.set_ydata(watts)
     line2.set_ydata(amps)
-
+    with open(output_file, 'a') as f:
+        now = timer.now()
+        f.write(f'{now} {new_watt} {new_amp}\n')
+        
     return line1, line2, bars
 
 
 if visual_mode:
     ani = animation.FuncAnimation(fig, update, frames=100, interval=100, blit=False)
     plt.show()
-            
 
-
-
-
+        

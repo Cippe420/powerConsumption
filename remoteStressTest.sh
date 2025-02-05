@@ -35,7 +35,7 @@ main()
     ssh $sshmachine 'python3 -u powerConsumption/pwr.py' >> cpuPower.txt &
     processes+=($!)
 
-    python3 dynamicGraph.py -o out.csv -s summary.csv -v &
+    python3 dynamicGraph.py -o output.csv -s summary.csv -v &
     # args are the ip address of the remote machine
     processes+=($!)
 
@@ -44,14 +44,24 @@ main()
         echo runnando in background il processo : $i
     done
 
+
+    nSensors=0
+    echo "Totale sensori nella rete: $nSensors" >> output.csv
+
     if $hastosleep; then
         sleep $sleeptime
     else
         if $interactive; then
             while true; do
                 read -p "Premi q per quittare la sessione " input
-                if [[ "$input" == "q" ]]; then
+                if [[ "$input" -eq "q" ]]; then
                     break
+
+                elif [[ "$input" -eq "s" ]]; then
+                    echo "Aggiungo un sensore al totale"
+                    nSensors=$((nSensors+1))
+                    echo "Totale sensori: $nSensors"
+                    echo "Totale sensori nella rete: $nSensors" >> output.csv
                 else
                     echo "Input non valido. Riprova."
                 fi
