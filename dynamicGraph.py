@@ -84,9 +84,12 @@ def update(frame):
     new_watt = sLine.split()[3][1:]
     with open('cpuPower.txt','r') as f:
         riga = f.readlines()[-4:]
-        for i in range(len(riga)):
-            cpuN[i].append(float(riga[i].split()[1][0:-1]))
-            lastSeen = [cpuN[i][-1] for i in range(4)]        
+        if riga != []:            
+            for i in range(len(riga)):
+                cpuN[i].append(float(riga[i].split()[1][0:-1]))
+                lastSeen = [cpuN[i][-1] for i in range(4)]                  
+            for bar, value in zip(bars, lastSeen):
+                bar.set_height(value)
     watts.append(float(new_watt))
     amps.append(float(new_amp))
     if len(watts) > 100:
@@ -95,9 +98,6 @@ def update(frame):
     line1.set_ydata(watts)
     line2.set_ydata(amps)
 
-    for bar, value in zip(bars, lastSeen):
-        bar.set_height(value)
-    
     return line1, line2, bars
 
 
