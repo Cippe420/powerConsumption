@@ -1,4 +1,5 @@
 import time
+import sqlite3
 
 def parse_cpu_times(lines):
     """Parsa i tempi della CPU dalla lista delle righe."""
@@ -46,6 +47,13 @@ def main():
         if not curr_cpu_times:
             return
         usage = calculate_cpu_usage(prev_cpu_times, curr_cpu_times)
+        
+        with sqlite3.connect("/home/pi/coap.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM sensors")
+            count = cursor.fetchone()[0]
+            print(f"Numero di sensori: {count}")
+
         for cpu, percent in usage.items():
             print(f"  {cpu}: {percent:.2f}%")
 

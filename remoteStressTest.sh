@@ -54,10 +54,11 @@ main()
         if $interactive; then
             while true; do
                 read -p "Premi q per quittare la sessione " input
-                if [[ "$input" -eq "q" ]]; then
+                if [[ "$input" == "q" ]]; then
+                    echo "inserito il carattere: $input"
                     break
 
-                elif [[ "$input" -eq "s" ]]; then
+                elif [[ "$input" == "s" ]]; then
                     echo "Aggiungo un sensore al totale"
                     nSensors=$((nSensors+1))
                     echo "Totale sensori: $nSensors"
