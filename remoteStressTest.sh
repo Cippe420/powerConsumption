@@ -1,4 +1,16 @@
 #!/bin/bash
+
+usage()
+{
+    echo "Usage: remoteStressTest.sh [-i] [-t SECONDS] [-m SSH_MACHINE]"
+    echo "Options: -m SSH_MACHINE    Specify the machine to ssh into"
+    echo "                           "
+    echo "         -t SECONDS        Specify the time to run the test"
+    echo "         -i                Run in interactive mode"  
+    exit 1
+}
+
+
 main()
 {
 
@@ -27,7 +39,7 @@ main()
                 echo "interactive: $interactive"
                 ;;
             \?)
-                echo "Invalid option: $OPTARG" 1>&2
+                usage
                 ;;
         esac
     done
@@ -53,9 +65,8 @@ main()
     else
         if $interactive; then
             while true; do
-                read -p "Premi q per quittare la sessione " input
+                read -p "Premi q per quittare la sessione, r per segnare l'aggiunta di un altro sensore " input
                 if [[ "$input" == "q" ]]; then
-                    echo "inserito il carattere: $input"
                     break
 
                 elif [[ "$input" == "s" ]]; then
@@ -67,7 +78,12 @@ main()
                     echo "Input non valido. Riprova."
                 fi
             done
-        
+
+        if [$interactive == $hastosleep]; then
+            echo "Error: Interactive and Timeout conflict"
+            exit 1
+        fi
+
         fi
     fi
 
@@ -80,5 +96,9 @@ main()
     done
 
 }
+
+if [ "$#" -eq 0 ]; then
+    usage
+fi
 
 main "$@"

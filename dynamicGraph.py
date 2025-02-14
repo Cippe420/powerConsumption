@@ -26,6 +26,7 @@ starting_time = timer.now()
 
 def signal_handler(sig,frame):
     end_time = timer.now()
+    print("Exiting...") 
     summary,sx = plt.subplots(2,2)
     sx[0,0].set_xlim(0,len(watts))
     sx[0,0].set_ylim(0,20)
@@ -34,7 +35,12 @@ def signal_handler(sig,frame):
     sx[0,0].plot(watts,label='wattage',color='black')
     sx[0,1].plot(amps,label='amps',color='orange')
     sx[1,0].set_ylim(0,100)
-    avgCpu = [sum(cpuN[i])/len(cpuN[i]) for i in range(4)]
+    avgCpu = []
+    for i in range(4):
+        if len (cpuN[i]) != 0:
+            avgCpu.append(sum(cpuN[i])/len(cpuN[i]))
+        else:
+            avgCpu.append(0)
     sx[1,0].bar(labels, avgCpu, color='red')
     sx[0,0].set_title('Wattage')
     sx[0,0].set_xlabel('Time')
@@ -56,9 +62,10 @@ def signal_handler(sig,frame):
         f.write(f'Average Wattage: {sum(totalWatts)/len(totalWatts)}\n')
         f.write(f'Average Amperes: {sum(totalAmps)/len(totalAmps)}\n')
         for i in range(4):
-            f.write(f'Average CPU {i} Power: {sum(totalCpuPower[i])/len(totalCpuPower[i])}\n')
-        
-
+            if len (cpuN[i]) != 0:
+                f.write(f'Average CPU {i} Power: {sum(cpuN[i])/len(cpuN[i])}\n')
+            else:
+                f.write(f'Average CPU {i} Power: 0\n')
     exit(0)
     
 signal.signal(signal.SIGINT,signal_handler)
@@ -116,11 +123,11 @@ def update(frame):
     totalWatts.append(float(new_watt))
     totalAmps.append(float(new_amp))
 
-    if len(watts) > 100:
-        watts.pop(0)
-        amps.pop(0)
-    line1.set_ydata(watts)
-    line2.set_ydata(amps)
+    # if len(watts) > 100:
+    #     watts.pop(0)
+    #     amps.pop(0)
+    line1.set_ydata(watts[-100:])
+    line2.set_ydata(amps[-100:])
     with open(output_file, 'a') as f:
         now = timer.now()
         f.write(f'{now} {new_watt} {new_amp}\n')
