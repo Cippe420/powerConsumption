@@ -56,7 +56,7 @@ def main():
         # stampa l'utilizzo delle cpu ed il numero di sensori che compongono la rete
         
         line = ''
-        line += f'{count} '
+        line += f'{count}'
         for cpu, percent in usage.items():
             line += (f" {percent:.2f}")
             
