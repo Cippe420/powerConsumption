@@ -59,7 +59,6 @@ def main():
         print(f"Numero di sensori: {count}")
         for cpu, percent in usage.items():
             print(f"{cpu}: {percent:.2f}")
-        print('\n')
         
 
 if __name__ == "__main__":
