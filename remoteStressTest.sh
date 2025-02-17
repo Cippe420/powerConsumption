@@ -17,6 +17,7 @@ main()
     hastosleep=false
     interactive=false
     processes=()
+    sshprocesses=()
     rm cpuPower.txt
     touch cpuPower.txt
     # parse options
@@ -45,7 +46,7 @@ main()
     done
 
     ssh $sshmachine 'python3 -u powerConsumption/pwr.py' >> cpuPower.txt &
-    processes+=($!)
+    sshprocesses+=($!)
 
     python3 dynamicGraph.py -o output.csv -s summary.csv -v &
     # args are the ip address of the remote machine
@@ -56,6 +57,9 @@ main()
         echo runnando in background il processo : $i
     done
 
+    for i in "${sshprocesses[@]}"; do
+        echo runnando in ssh il processo : $i
+    done
 
     nSensors=0
     echo "Totale sensori nella rete: $nSensors" >> output.csv
@@ -91,9 +95,17 @@ main()
     for i in "${processes[@]}"; do
         if ps -p $i > /dev/null; then
             echo killando il processo: $i
+            kill -INT $i 
+        fi
+    done
+
+    for i in "${sshprocesses[@]}"; do
+        if ps -p $i > /dev/null; then
+            echo killando il processo ssh: $i
             kill -9 $i 
         fi
     done
+
 
 }
 

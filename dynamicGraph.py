@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 import matplotlib.animation as animation
 import numpy as np
 import serial
@@ -6,8 +7,6 @@ import argparse
 import signal
 from datetime import datetime as timer
 
-with open('cpuPower.txt','w') as f:
-    pass
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v' , '--visual',action='store_true',help='Visualize the data')
@@ -23,6 +22,11 @@ totalAmps=[]
 totalCpuPower = [[],[],[],[]]
 
 starting_time = timer.now()
+starting_datetime = timer.now().strftime("%Y-%m-%d_%H-%M-%S")
+currentPath='tests/'+starting_datetime
+os.mkdir(currentPath)
+with open('cpuPower.txt','w') as f:
+    pass
 
 def signal_handler(sig,frame):
     end_time = timer.now()
@@ -54,8 +58,7 @@ def signal_handler(sig,frame):
     plt.legend()
     plt.savefig('summary.png')
 
-    with open(summary_file,'w') as f: 
-        print("aperto il file csv")
+    with open(currentPath+'/'+summary_file,'w') as f: 
         f.write(f'Starting time: {starting_time}\n')
         f.write(f'Ending time: {end_time}\n')
         f.write(f'Elapsed time: {end_time-starting_time}\n')
@@ -66,6 +69,9 @@ def signal_handler(sig,frame):
                 f.write(f'Average CPU {i} Power: {sum(cpuN[i])/len(cpuN[i])}\n')
             else:
                 f.write(f'Average CPU {i} Power: 0\n')
+    with open('cpuPower.txt','r') as f:
+        with open(currentPath+'/cpuPower.txt','w') as f2:
+            f2.write(f.read())
     exit(0)
     
 signal.signal(signal.SIGINT,signal_handler)
@@ -112,10 +118,14 @@ def update(frame):
         riga = f.readlines()[-5:]
         if riga != []:            
             for i in range(len(riga)):
-                cpuN[i].append(float(riga[i].split()[1][0:-1]))
-                lastSeen = [cpuN[i][-1] for i in range(4)] 
-                totalCpuPower[i].append(float(riga[i].split()[1][0:-1]))
-                
+                if i < 4:
+                    cpuN[i].append(float(riga[i].split()[1][0:-1]))
+                    lastSeen = [cpuN[i][-1] for i in range(4)] 
+                    totalCpuPower[i].append(float(riga[i].split()[1][0:-1]))
+                else:
+                    nSensors = int(riga[i].split(":")[1].strip())
+                    print(nSensors)
+                    
             for bar, value in zip(bars, lastSeen):
                 bar.set_height(value)
     watts.append(float(new_watt))
@@ -128,7 +138,9 @@ def update(frame):
     #     amps.pop(0)
     line1.set_ydata(watts[-100:])
     line2.set_ydata(amps[-100:])
-    with open(output_file, 'a') as f:
+    
+    
+    with open(currentPath+ '/'+output_file, 'a') as f:
         now = timer.now()
         f.write(f'{now} {new_watt} {new_amp}\n')
         
@@ -136,6 +148,9 @@ def update(frame):
 
 
 if visual_mode:
+
+    
+    
     ani = animation.FuncAnimation(fig, update, frames=100, interval=100, blit=False)
     plt.show()
 

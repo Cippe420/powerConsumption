@@ -56,9 +56,10 @@ def main():
 
             
         # stampa l'utilizzo delle cpu ed il numero di sensori che compongono la rete
-        for cpu, percent in usage.items():
-            print(f"  {cpu}: {percent:.2f}")
         print(f"Numero di sensori: {count}")
+        for cpu, percent in usage.items():
+            print(f"{cpu}: {percent:.2f}")
+        print('\n')
         
 
 if __name__ == "__main__":
