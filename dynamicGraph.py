@@ -109,7 +109,7 @@ def update(frame):
     new_amp = sLine.split()[1]
     new_watt = sLine.split()[3][1:]
     with open('cpuPower.txt','r') as f:
-        riga = f.readlines()[-4:]
+        riga = f.readlines()[-5:]
         if riga != []:            
             for i in range(len(riga)):
                 cpuN[i].append(float(riga[i].split()[1][0:-1]))

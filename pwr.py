@@ -48,17 +48,18 @@ def main():
             return
         usage = calculate_cpu_usage(prev_cpu_times, curr_cpu_times)
         
-        # with sqlite3.connect("/home/pi/coap.db") as conn:
-        #     cursor = conn.cursor()
-        #     cursor.execute("SELECT COUNT(*) FROM sensors")
-        #     count = cursor.fetchone()[0]
-        #     print(f"Numero di sensori: {count}")
+        with sqlite3.connect("/home/pi/coap.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM sensors")
+            count = cursor.fetchone()[0]
         prev_cpu_times = curr_cpu_times
 
             
-
+        # stampa l'utilizzo delle cpu ed il numero di sensori che compongono la rete
         for cpu, percent in usage.items():
-            print(f"  {cpu}: {percent:.2f}%")
+            print(f"  {cpu}: {percent:.2f}")
+        print(f"Numero di sensori: {count}")
+        
 
 if __name__ == "__main__":
     main()
