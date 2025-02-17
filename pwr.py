@@ -59,6 +59,8 @@ def main():
         line += '{count} '
         for cpu, percent in usage.items():
             line += (f" {percent:.2f}")
+            
+        print(line)
         
 
 if __name__ == "__main__":
