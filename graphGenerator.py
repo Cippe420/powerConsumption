@@ -17,20 +17,16 @@ def main():
             # apro il file delle cpu e riempio la matrice
             with open("tests/"+file+"/cpuPower.txt") as f:
                 for index,line in enumerate(f):
-                    if "nSens" in line:
-                        nSens = int(line.strip().split(":")[1])
-                        nSens_list.append(nSens)
-                        if last_nSens is not None and nSens != last_nSens:
-                            vertical_lines.append(index // 6)
-                        last_nSens = nSens
-                    elif "cpu0" in line:
-                        cpuS[0].append(float(line.strip().split(":")[1]))
-                    elif "cpu1" in line:
-                            cpuS[1].append(float(line.strip().split(":")[1]))
-                    elif "cpu2" in line:
-                            cpuS[2].append(float(line.strip().split(":")[1]))
-                    elif "cpu3" in line:
-                            cpuS[3].append(float(line.strip().split(":")[1]))                
+                    nSens,cpu,cpu0,cpu1,cpu2,cpu3 = line.split()
+                    nSens = int(nSens)
+                    nSens_list.append(nSens)
+                    if last_nSens is not None and nSens != last_nSens:
+                        vertical_lines.append(index // 6)
+                    last_nSens = nSens
+                    cpuS[0].append(float(cpu0))
+                    cpuS[1].append(float(cpu1))
+                    cpuS[2].append(float(cpu2))
+                    cpuS[3].append(float(cpu3))                
                 # apro il file output e salvo le misurazioni
                 with open("tests/"+file+"/output.csv") as d:
                     lines = d.readlines()
