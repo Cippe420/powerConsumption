@@ -53,12 +53,12 @@ def main():
             cursor.execute("SELECT COUNT(*) FROM sensors")
             count = cursor.fetchone()[0]
         prev_cpu_times = curr_cpu_times
-
-            
         # stampa l'utilizzo delle cpu ed il numero di sensori che compongono la rete
-        print(f"Numero di sensori: {count}")
+        
+        line = ''
+        line += '{count} '
         for cpu, percent in usage.items():
-            print(f"{cpu}: {percent:.2f}")
+            line += (f" {percent:.2f}")
         
 
 if __name__ == "__main__":

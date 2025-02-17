@@ -19,7 +19,6 @@ output_file = args.output
 summary_file = args.summary
 totalWatts=[]
 totalAmps=[]
-totalCpuPower = [[],[],[],[]]
 
 starting_time = timer.now()
 starting_datetime = timer.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -115,17 +114,13 @@ def update(frame):
     new_amp = sLine.split()[1]
     new_watt = sLine.split()[3][1:]
     with open('cpuPower.txt','r') as f:
-        riga = f.readlines()[-5:]
-        if riga != []:            
-            for i in range(len(riga)):
-                if i < 4:
-                    cpuN[i].append(float(riga[i].split()[1][0:-1]))
-                    lastSeen = [cpuN[i][-1] for i in range(4)] 
-                    totalCpuPower[i].append(float(riga[i].split()[1][0:-1]))
-                else:
-                    nSensors = int(riga[i].split(":")[1].strip())
-                    print(nSensors)
-                    
+        riga = f.readlines()[-6:]
+        if riga != []:
+            nSensors = riga[0].split(':')[1]
+            for i in range(1,4):
+                cpuN[i-1].append(float(riga[i].split(':')[1]))
+                lastSeen= [cpuN[i][-1] for i in range(4)]
+            
             for bar, value in zip(bars, lastSeen):
                 bar.set_height(value)
     watts.append(float(new_watt))
@@ -148,9 +143,6 @@ def update(frame):
 
 
 if visual_mode:
-
-    
-    
     ani = animation.FuncAnimation(fig, update, frames=100, interval=100, blit=False)
     plt.show()
 
