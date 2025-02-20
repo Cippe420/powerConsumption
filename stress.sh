@@ -1,1 +1,0 @@
-stress-ng -c 0 -l $1 -t 10s

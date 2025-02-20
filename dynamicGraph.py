@@ -26,6 +26,8 @@ currentPath='tests/'+starting_datetime
 os.mkdir(currentPath)
 with open('cpuPower.txt','w') as f:
     pass
+with open('timedcpuPower.txt','w') as f:
+    pass
 
 def signal_handler(sig,frame):
     end_time = timer.now()
@@ -68,7 +70,7 @@ def signal_handler(sig,frame):
                 f.write(f'Average CPU {i} Power: {sum(cpuN[i])/len(cpuN[i])}\n')
             else:
                 f.write(f'Average CPU {i} Power: 0\n')
-    with open('cpuPower.txt','r') as f:
+    with open('timedcpuPower.txt','r') as f:
         with open(currentPath+'/cpuPower.txt','w') as f2:
             f2.write(f.read())
     exit(0)
@@ -81,6 +83,9 @@ amps = [0 for _ in time]
 cpuN = [[0 for _ in time] for _ in range(4)] 
 lastSeenCpu = [0 for _ in range(4)] 
 serial_port = serial.Serial('/dev/ttyUSB0', 9600)
+last_nSens= None
+vertical_lines=[]
+nSens_list=[]
 
 # configurazione iniziale del grafico
 fig, ax = plt.subplots(2, 2, figsize=(10, 8))
@@ -109,36 +114,47 @@ ax[0, 0].legend()
 ax[0, 1].legend()
 
 def update(frame):
-    
+    # read the serial values of watts and amperes
     sLine = serial_port.readline().decode('utf-8')
-    new_amp = sLine.split()[1]
-    new_watt = sLine.split()[3][1:]
-    with open('cpuPower.txt','r') as f:
-        riga = f.readlines()[-6:]
-        if riga != []:
-            nSensors = riga[0].split(':')[1]
-            for i in range(1,4):
-                cpuN[i-1].append(float(riga[i].split(':')[1]))
-                lastSeen= [cpuN[i][-1] for i in range(4)]
-            
-            for bar, value in zip(bars, lastSeen):
-                bar.set_height(value)
-    watts.append(float(new_watt))
-    amps.append(float(new_amp))
-    totalWatts.append(float(new_watt))
-    totalAmps.append(float(new_amp))
-
-    # if len(watts) > 100:
-    #     watts.pop(0)
-    #     amps.pop(0)
-    line1.set_ydata(watts[-100:])
-    line2.set_ydata(amps[-100:])
-    
-    
-    with open(currentPath+ '/'+output_file, 'a') as f:
-        now = timer.now()
-        f.write(f'{now} {new_watt} {new_amp}\n')
+    # get the current timestamp
+    now = timer.now()
+    if sLine != '':
+        new_amp = sLine.split()[1]
+        new_watt = sLine.split()[3][1:]
         
+    with open('cpuPower.txt','r') as f:
+        # read the last cpu values from file
+        with open(currentPath+ '/'+output_file, 'a') as d:
+            
+            content = f.readlines()
+            if content != []:
+
+                nSens,cpu,cpu0,cpu1,cpu2,cpu3 = content[-1].split()
+            
+                with open('timedcpuPower.txt','a') as f2:
+                    f2.write(f'{now} {nSens} {cpu} {cpu0} {cpu1} {cpu2} {cpu3}\n')
+
+                cpuN[0].append(float(cpu0))
+                cpuN[1].append(float(cpu1))
+                cpuN[2].append(float(cpu2))
+                cpuN[3].append(float(cpu3))
+                lastSeen= [cpuN[i][-1] for i in range(4)]
+                for bar, value in zip(bars, lastSeen):
+                    bar.set_height(value)
+                    
+            watts.append(float(new_watt))
+            amps.append(float(new_amp))
+            totalWatts.append(float(new_watt))
+            totalAmps.append(float(new_amp))
+
+            # if len(watts) > 100:
+            #     watts.pop(0)
+            #     amps.pop(0)
+            line1.set_ydata(watts[-100:])
+            line2.set_ydata(amps[-100:])
+            
+            d.write(f'{now} {new_watt} {new_amp}\n')
+                
     return line1, line2, bars
 
 
