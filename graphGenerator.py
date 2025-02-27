@@ -18,6 +18,11 @@ def main():
     
     
     for file in files:
+        watts = []
+        amperes = []
+        cpuS = [[],[],[],[]]
+        nSens_list = []
+                        
         # apre ogni cartella
         if os.path.isdir('tests/'+file) and len(os.listdir('tests/'+file)) == 3:
             # apro il file delle cpu e riempio la matrice
@@ -41,9 +46,7 @@ def main():
                         cpuS[2].append(float(cpu2))
                         cpuS[3].append(float(cpu3))
                     # apro il file output e salvo le misurazioni
-                    watts = []
-                    amperes = []
-                        
+                    
                     for index,line in enumerate(d):
                         now_day,now_timestamp,watt,ampere = line.split()
                         if index ==0:
@@ -66,7 +69,6 @@ def main():
                     axs[0].plot(timestampsMeasurements,watts, color='blue')
                     axs[0].set_title("Consumo di Watt")
                     axs[0].set_ylabel("Watt")
-                    axs[0].legend()
                     axs[0].grid(True)
 
                     # 2. Grafico degli Ampere
@@ -75,7 +77,6 @@ def main():
                     axs[1].plot(timestampsMeasurements,amperes,color='green')
                     axs[1].set_title("Consumo di Ampere")
                     axs[1].set_ylabel("Ampere")
-                    axs[1].legend()
                     axs[1].grid(True)
 
                     # 3. Grafico degli Sforzi delle CPU
