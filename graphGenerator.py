@@ -67,7 +67,7 @@ def main():
                     axs[0].set_xlim(0,max(timestampsMeasurements))
                     
                     axs[0].plot(timestampsMeasurements,watts, color='blue')
-                    axs[0].set_title("Consumo di Watt")
+                    axs[0].set_title("Assorbimento di potenza")
                     axs[0].set_ylabel("Watt")
                     axs[0].grid(True)
 
@@ -75,7 +75,7 @@ def main():
                     axs[1].set_xlim(0,max(timestampsMeasurements))
                     axs[1].set_ylim(0,max(amperes)+1)
                     axs[1].plot(timestampsMeasurements,amperes,color='green')
-                    axs[1].set_title("Consumo di Ampere")
+                    axs[1].set_title("Corrente assorbita")
                     axs[1].set_ylabel("Ampere")
                     axs[1].grid(True)
 
@@ -87,7 +87,7 @@ def main():
                         axs[2].set_ylim(0,max(cpuS[0] + cpuS[1] + cpuS[2] +cpuS[3])+10)
                     for i, cpu in enumerate(cpuS):
                         axs[2].plot(timestampsCpu,cpu, label=f"CPU {i+1}")
-                    axs[2].set_title("Sforzo delle 4 CPU")
+                    axs[2].set_title("Carico CPU")
                     axs[2].set_ylabel("Percentuale di utilizzo (%)")
                     axs[2].set_xlabel("Tempo (s)")
                     axs[2].legend()

@@ -45,7 +45,7 @@ main()
         esac
     done
 
-    ssh $sshmachine 'python3 -u powerConsumption/pwr.py' >> cpuPower.txt &
+    ssh $sshmachine 'python3 -u powerConsumption2/pwr.py' >> cpuPower.txt &
     sshprocesses+=($!)
 
     python3 dynamicGraph.py -o output.csv -s summary.csv -v &

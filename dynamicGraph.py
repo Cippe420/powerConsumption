@@ -142,23 +142,23 @@ def update(frame):
                 for bar, value in zip(bars, lastSeen):
                     bar.set_height(value)
                     
-            watts.append(float(new_watt))
-            amps.append(float(new_amp))
-            totalWatts.append(float(new_watt))
-            totalAmps.append(float(new_amp))
+                watts.append(float(new_watt))
+                amps.append(float(new_amp))
+                totalWatts.append(float(new_watt))
+                totalAmps.append(float(new_amp))
 
-            # if len(watts) > 100:
-            #     watts.pop(0)
-            #     amps.pop(0)
-            line1.set_ydata(watts[-100:])
-            line2.set_ydata(amps[-100:])
-            
-            d.write(f'{now} {new_watt} {new_amp}\n')
+                # if len(watts) > 100:
+                #     watts.pop(0)
+                #     amps.pop(0)
+                line1.set_ydata(watts[-100:])
+                line2.set_ydata(amps[-100:])
+                d.write(f'{nSens} {now} {new_watt} {new_amp}\n')
                 
     return line1, line2, bars
 
 
 if visual_mode:
+    print("sedia")
     ani = animation.FuncAnimation(fig, update, frames=100, interval=100, blit=False)
     plt.show()
 
