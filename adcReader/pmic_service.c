@@ -118,27 +118,29 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  // start polling the values
+  client_fd = accept(server_fd, NULL, NULL);
+
   while (!shouldTerminate) {
     char result[MAX_STRING];
+
     if (gencmd(mb, "pmic_read_adc", result, sizeof(result)) == 0) {
       strncpy(last_value, result, sizeof(last_value) - 1);
     }
 
-    struct timeval tv = {0, 0};
-    fd_set fds;
-    FD_ZERO(&fds);
-    FD_SET(server_fd, &fds);
-    int ret = select(server_fd + 1, &fds, NULL, NULL, &tv);
-    if (ret > 0 && FD_ISSET(server_fd, &fds)) {
+    if (client_fd < 0) {
       client_fd = accept(server_fd, NULL, NULL);
-      if (client_fd > 0) {
-        write(client_fd, last_value, strlen(last_value));
-        write(client_fd, "\n", 1);
+    } else {
+      // send the last value to the client
+      ssize_t bytes_sent = send(client_fd, last_value, strlen(last_value), 0);
+      if (bytes_sent < 0) {
+        perror("send");
+        close(client_fd);
+        client_fd = accept(server_fd, NULL, NULL);
+        continue;
+      } else {
+        write(client_fd, "\n", 1); // send a newline for better readability
       }
     }
-    // obsoleta, should use nanosleep
-    usleep(500000);
   }
 
   close(client_fd);
