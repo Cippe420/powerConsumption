@@ -135,12 +135,13 @@ int main(int argc, char *argv[]) {
       if (client_fd > 0) {
         write(client_fd, last_value, strlen(last_value));
         write(client_fd, "\n", 1);
-        close(client_fd);
       }
     }
     // obsoleta, should use nanosleep
     usleep(500000);
   }
+
+  close(client_fd);
 
   // cleanup
   unlink(SOCKET_PATH);
