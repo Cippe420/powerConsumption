@@ -174,11 +174,17 @@ int main(int argc, char *argv[]) {
         if (sscanf(line, "%*s current(%d)=%lfA", &idx, &value) == 2) {
           if (idx >= 0 && idx < MAX_RAILS) {
             currents[idx] = value;
+            log_message(log_file,
+                        "PMIC service: Current value for rail %d: %.3f A", idx,
+                        value);
           }
         }
         if (sscanf(line, "%*s volt(%d)=%lfV", &idx, &value) == 2) {
           if (idx >= 0 && idx < MAX_RAILS) {
             voltages[idx] = value;
+            log_message(log_file,
+                        "PMIC service: Voltage value for rail %d: %.3f V", idx,
+                        value);
           }
         }
         line = strtok(NULL, "\n");
