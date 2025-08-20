@@ -13,6 +13,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#define LOGFILE "/var/log/pmic_service.log"
 #define DEVICE_FILE_NAME "/dev/vcio"
 #define SOCKET_PATH "/run/pmic.sock"
 #define MAX_STRING 1024
@@ -35,6 +36,20 @@ static int mbox_open() {
     exit(-1);
   }
   return file_desc;
+}
+
+static void log_message(char message[]) {
+  FILE *log_file = fopen(LOGFILE, "a");
+  if (log_file) {
+    time_t now = time(NULL);
+    struct tm *tm_info = localtime(&now);
+    char time_str[26];
+    strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
+    fprintf(log_file, "[%s] %s\n", time_str, message);
+    fclose(log_file);
+  } else {
+    perror("Failed to open log file");
+  }
 }
 
 static void mbox_close(int file_desc) { close(file_desc); }
@@ -124,7 +139,7 @@ int main(int argc, char *argv[]) {
   }
 
   client_fd = accept(server_fd, NULL, NULL);
-
+  log_message("PMIC service started, waiting for connections...");
   while (!shouldTerminate) {
     char result[MAX_STRING];
     double currents[MAX_RAILS];
