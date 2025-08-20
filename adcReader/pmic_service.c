@@ -17,6 +17,7 @@
 #define SOCKET_PATH "/run/pmic.sock"
 #define MAX_STRING 1024
 #define MAJOR_NUM 100
+#define MAX_RAILS 32
 #define IOCTL_MBOX_PROPERTY _IOWR(MAJOR_NUM, 0, char *)
 #define GET_GENCMD_RESULT 0x00030080
 int mb;
@@ -126,24 +127,52 @@ int main(int argc, char *argv[]) {
 
   while (!shouldTerminate) {
     char result[MAX_STRING];
+    char raw[MAX_STRING];
 
     if (gencmd(mb, "pmic_read_adc", result, sizeof(result)) == 0) {
-      strncpy(last_value, result, sizeof(last_value) - 1);
-    }
+      double total_current = 0.0;
+      double total_power = 0.0;
 
-    if (client_fd < 0) {
-      client_fd = accept(server_fd, NULL, NULL);
-    } else {
-      // send the last value to the client
-      ssize_t bytes_sent = send(client_fd, last_value, strlen(last_value), 0);
-      if (bytes_sent < 0) {
-        perror("send");
-        close(client_fd);
-        client_fd = accept(server_fd, NULL, NULL);
-        continue;
-      } else {
-        write(client_fd, "\n", 1); // send a newline for better readability
+      // parsing e calcolo
+      char buffer[4096];
+      strncpy(buffer, raw, sizeof(buffer) - 1);
+      buffer[sizeof(buffer) - 1] = '\0';
+
+      char *line = strtok(buffer, "\n");
+      while (line) {
+        int idx;
+        double value;
+        if (sscanf(line, "%*s current(%d)=%lfA", &idx, &value) == 2)
+          total_current += value;
+        if (sscanf(line, "%*s volt(%d)=%lfV", &idx, &value) == 2)
+          ; // volt per ora lo ignoriamo perché useremo la corrente sommata *
+            // volt medio se vuoi
+        line = strtok(NULL, "\n");
       }
+
+      // calcolo semplificato della potenza: somma corrente * tensione media
+      double volt_mean =
+          3.3; // esempio: puoi calcolare media dei volt reali se vuoi
+      total_power = total_current * volt_mean;
+
+      char out[128];
+      int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
+                         total_current, total_power);
+
+      if (client_fd < 0) {
+        client_fd = accept(server_fd, NULL, NULL);
+      } else {
+        // send the last value to the client
+        ssize_t bytes_sent = send(client_fd, out, len, 0);
+        if (bytes_sent < 0) {
+          perror("send");
+          close(client_fd);
+          client_fd = accept(server_fd, NULL, NULL);
+          continue;
+        }
+      }
+
+      usleep(1000000); // sleep for 1 second before next read
     }
   }
 
