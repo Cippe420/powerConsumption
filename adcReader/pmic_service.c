@@ -127,6 +127,9 @@ int main(int argc, char *argv[]) {
 
   while (!shouldTerminate) {
     char result[MAX_STRING];
+    double currents[MAX_RAILS];
+    double voltages[MAX_RAILS];
+    double powers[MAX_RAILS];
     memset(result, 0, sizeof(result));
 
     if (gencmd(mb, "pmic_read_adc", result, sizeof(result)) == 0) {
@@ -142,18 +145,29 @@ int main(int argc, char *argv[]) {
       while (line) {
         int idx;
         double value;
-        if (sscanf(line, "%*s current(%d)=%lfA", &idx, &value) == 2)
-          total_current += value;
-        if (sscanf(line, "%*s volt(%d)=%lfV", &idx, &value) == 2)
-          ; // volt per ora lo ignoriamo perché useremo la corrente sommata *
-            // volt medio se vuoi
+        if (sscanf(line, "%*s current(%d)=%lfA", &idx, &value) == 2) {
+          if (idx >= 0 && idx < MAX_RAILS) {
+            currents[idx] = value;
+          }
+        }
+        if (sscanf(line, "%*s volt(%d)=%lfV", &idx, &value) == 2) {
+          if (idx >= 0 && idx < MAX_RAILS) {
+            voltages[idx] = value;
+          }
+        }
         line = strtok(NULL, "\n");
       }
 
-      // calcolo semplificato della potenza: somma corrente * tensione media
-      double volt_mean =
-          3.3; // esempio: puoi calcolare media dei volt reali se vuoi
-      total_power = total_current * volt_mean;
+      // calcolo potenza istantanea
+      for (int i = 0; i < MAX_RAILS; i++) {
+        if (voltages[i] > 0) {
+          powers[i] = currents[i] * voltages[i];
+          total_current += powers[i] / 5.0; // corrente totale in A
+          total_power += powers[i];
+        } else {
+          powers[i] = 0.0; // se la tensione è zero, la potenza è zero
+        }
+      }
 
       char out[128];
       int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
