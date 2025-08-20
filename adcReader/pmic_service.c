@@ -127,7 +127,7 @@ int main(int argc, char *argv[]) {
 
   while (!shouldTerminate) {
     char result[MAX_STRING];
-    char raw[MAX_STRING];
+    memset(result, 0, sizeof(result));
 
     if (gencmd(mb, "pmic_read_adc", result, sizeof(result)) == 0) {
       double total_current = 0.0;
@@ -135,7 +135,7 @@ int main(int argc, char *argv[]) {
 
       // parsing e calcolo
       char buffer[4096];
-      strncpy(buffer, raw, sizeof(buffer) - 1);
+      strncpy(buffer, result, sizeof(buffer) - 1);
       buffer[sizeof(buffer) - 1] = '\0';
 
       char *line = strtok(buffer, "\n");
