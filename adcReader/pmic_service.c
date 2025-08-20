@@ -1,5 +1,7 @@
 
+#include <arpa/inet.h>
 #include <fcntl.h>
+#include <netinet/in.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -7,7 +9,7 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
-#include <sys/un.h>
+#include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
 
