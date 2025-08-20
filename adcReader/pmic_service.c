@@ -38,18 +38,24 @@ static int mbox_open() {
   return file_desc;
 }
 
-static void log_message(char message[]) {
-  FILE *log_file = fopen(LOGFILE, "a");
-  if (log_file) {
-    time_t now = time(NULL);
-    struct tm *tm_info = localtime(&now);
-    char time_str[26];
-    strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
-    fprintf(log_file, "[%s] %s\n", time_str, message);
-    fclose(log_file);
-  } else {
-    perror("Failed to open log file");
-  }
+static void log_message(FILE *log_file, const char *message, ...) {
+  va_list args;
+  time_t now;
+  struct tm *tm_info;
+  char time_str[26];
+
+  // Get current time
+  time(&now);
+  tm_info = localtime(&now);
+  strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
+
+  // Print to log file
+  fprintf(log_file, "[%s] ", time_str);
+  va_start(args, message);
+  vfprintf(log_file, message, args);
+  va_end(args);
+  fprintf(log_file, "\n");
+  fflush(log_file); // Ensure the log is written immediately
 }
 
 static void mbox_close(int file_desc) { close(file_desc); }
@@ -107,6 +113,11 @@ int main(int argc, char *argv[]) {
 
   signal(SIGTERM, sigint_handler);
   signal(SIGINT, sigint_handler);
+  FILE *log_file = fopen(LOGFILE, "a");
+  if (log_file == NULL) {
+    perror("Failed to open log file");
+    return 1;
+  }
 
   mb = mbox_open();
   // crea socket locale
@@ -139,7 +150,7 @@ int main(int argc, char *argv[]) {
   }
 
   client_fd = accept(server_fd, NULL, NULL);
-  log_message("PMIC service started, waiting for connections...");
+  log_message(log_file, "PMIC service started, waiting for connections...");
   while (!shouldTerminate) {
     char result[MAX_STRING];
     double currents[MAX_RAILS];
@@ -173,12 +184,20 @@ int main(int argc, char *argv[]) {
         line = strtok(NULL, "\n");
       }
 
+      for (int i = 0; i < MAX_RAILS; i++) {
+      }
+
       // calcolo potenza istantanea
       for (int i = 0; i < MAX_RAILS; i++) {
         if (voltages[i] > 0) {
           powers[i] = currents[i] * voltages[i];
           total_current += powers[i] / 5.0; // corrente totale in A
           total_power += powers[i];
+          log_message(log_file, "PMIC service: Current and Power values: ");
+          log_message(
+              log_file,
+              "PMIC service: Current: %.3f A, Voltage: %.3f V, Power: %.3f W",
+              currents[i], voltages[i], powers[i]);
         } else {
           powers[i] = 0.0; // se la tensione è zero, la potenza è zero
         }
