@@ -93,9 +93,9 @@ int main(int argc, char *argv[]) {
   mb = mbox_open();
   // crea socket locale
   int client_fd, server_fd;
-  struct sockaddr_un addr;
+  struct sockaddr_in addr;
 
-  server_fd = socket(AF_UNIX, SOCK_STREAM, 0);
+  server_fd = socket(AF_INET, SOCK_STREAM, 0);
   if (server_fd < 0) {
     perror("socket");
     return 1;
@@ -103,8 +103,10 @@ int main(int argc, char *argv[]) {
 
   unlink(SOCKET_PATH);
   memset(&addr, 0, sizeof(addr));
-  addr.sun_family = AF_UNIX;
-  strncpy(addr.sun_path, SOCKET_PATH, sizeof(addr.sun_path) - 1);
+  addr.sin_family = AF_INET;
+  addr.sin_port = htons(12345); // use port 12345 for the socket
+  addr.sin_addr.s_addr =
+      htonl(INADDR_ANY); // accept connections from any address
 
   if (bind(server_fd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
     perror("bind");
