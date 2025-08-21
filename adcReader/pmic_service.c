@@ -161,6 +161,7 @@ int main(int argc, char *argv[]) {
 
     char result[MAX_STRING];
     unsigned ret = gencmd(mb, "pmic get", result, sizeof(result));
+    log_message(log_file, result);
 
     measurement_t currents[MAX_RAILS];
     measurement_t voltages[MAX_RAILS];
@@ -173,6 +174,8 @@ int main(int argc, char *argv[]) {
     double rail_value;
 
     while (line) {
+
+      log_message(log_file, "Processing line: [%s]", line);
 
       int n =
           sscanf(line, " %31[^ ]_A current(%*d)=%lfA", rail_name, &rail_value);
