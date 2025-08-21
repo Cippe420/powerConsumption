@@ -177,14 +177,15 @@ int main(int argc, char *argv[]) {
       int n =
           sscanf(line, " %31[^ ]_A current(%*d)=%lfA", rail_name, &rail_value);
       if (n == 2) {
-        printf("MATCH corrente: rail=%s, value=%.6f\n", rail_name, rail_value);
+        log_message(log_file, "MATCH corrente: rail=%s, value=%.6f\n",
+                    rail_name, rail_value);
       } else {
         n = sscanf(line, " %31[^ ]_V volt(%*d)=%lfV", rail_name, &rail_value);
         if (n == 2) {
-          printf("MATCH tensione: rail=%s, value=%.6f\n", rail_name,
-                 rail_value);
+          log_message(log_file, "MATCH tensione: rail=%s, value=%.6f\n",
+                      rail_name, rail_value);
         } else {
-          printf("NO MATCH: [%s]\n", line);
+          log_message(log_file, "NO MATCH: [%s]\n", line);
         }
       }
       line = strtok(NULL, "\n");
