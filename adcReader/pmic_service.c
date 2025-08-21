@@ -109,6 +109,11 @@ void sigint_handler(int sig) {
   exit(0);
 }
 
+typedef struct {
+  char name[32];
+  double value;
+} measurement_t;
+
 int main(int argc, char *argv[]) {
 
   signal(SIGTERM, sigint_handler);
@@ -151,84 +156,67 @@ int main(int argc, char *argv[]) {
 
   client_fd = accept(server_fd, NULL, NULL);
   log_message(log_file, "PMIC service started, waiting for connections...");
+
   while (!shouldTerminate) {
+
     char result[MAX_STRING];
-    double currents[MAX_RAILS];
-    double voltages[MAX_RAILS];
-    double powers[MAX_RAILS];
-    memset(result, 0, sizeof(result));
+    unsigned ret = gencmd(mb, "pmic get", result, sizeof(result));
 
-    if (gencmd(mb, "pmic_read_adc", result, sizeof(result)) == 0) {
-      double total_current = 0.0;
-      double total_power = 0.0;
+    measurement_t currents[MAX_RAILS];
+    measurement_t voltages[MAX_RAILS];
 
-      // parsing e calcolo
-      char buffer[4096];
-      strncpy(buffer, result, sizeof(buffer) - 1);
-      buffer[sizeof(buffer) - 1] = '\0';
+    int n_currents = 0;
+    int n_voltages = 0;
+    char *line = strtok(result, "\n");
 
-      char *line = strtok(buffer, "\n");
-      while (line) {
-        int idx;
-        double value;
-        if (sscanf(line, "%*s current(%d)=%lfA", &idx, &value) == 2) {
-          if (idx >= 0 && idx < MAX_RAILS) {
-            currents[idx] = value;
-            log_message(log_file,
-                        "PMIC service: Current value for rail %d: %.3f A", idx,
-                        value);
-          }
-        }
-        if (sscanf(line, "%*s volt(%d)=%lfV", &idx, &value) == 2) {
-          if (idx >= 0 && idx < MAX_RAILS) {
-            voltages[idx] = value;
-            log_message(log_file,
-                        "PMIC service: Voltage value for rail %d: %.3f V", idx,
-                        value);
-          }
-        }
-        line = strtok(NULL, "\n");
+    char rail_name[32];
+    double rail_value;
+
+    while (line) {
+      if (sscanf(line, " %31[^_]_A current%*[^=]=%lfA", rail_name,
+                 &rail_value) == 2) {
+        strcpy(currents[n_currents].name, rail_name);
+        currents[n_currents].value = rail_value;
+        n_currents++;
+      } else if (sscanf(line, " %31[^_]_V voltage%*[^=]=%lfV", rail_name,
+                        &rail_value) == 2) {
+        strcpy(voltages[n_voltages].name, rail_name);
+        voltages[n_voltages].value = rail_value;
+        n_voltages++;
       }
+      line = strtok(NULL, "\n");
+    }
 
-      for (int i = 0; i < MAX_RAILS; i++) {
+    double total_current = 0.0;
+    double total_power = 0.0;
+
+    for (int i = 0; i < MAX_RAILS; i++) {
+      double P = voltages[i].value * currents[i].value;
+      if (voltages[i].value > 0 && currents[i].value > 0) {
+        total_current += currents[i].value;
+        total_power += P;
       }
+    }
 
-      // calcolo potenza istantanea
-      for (int i = 0; i < MAX_RAILS; i++) {
-        if (voltages[i] > 0) {
-          powers[i] = currents[i] * voltages[i];
-          total_current += powers[i] / 5.0; // corrente totale in A
-          total_power += powers[i];
-          log_message(log_file, "PMIC service: Current and Power values: ");
-          log_message(
-              log_file,
-              "PMIC service: Current: %.3f A, Voltage: %.3f V, Power: %.3f W",
-              currents[i], voltages[i], powers[i]);
-        } else {
-          powers[i] = 0.0; // se la tensione è zero, la potenza è zero
-        }
-      }
+    char out[128];
+    int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
+                       total_current, total_power);
 
-      char out[128];
-      int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
-                         total_current, total_power);
-
-      if (client_fd < 0) {
+    if (client_fd < 0) {
+      client_fd = accept(server_fd, NULL, NULL);
+    } else {
+      // send the last value to the client
+      ssize_t bytes_sent = send(client_fd, out, len, 0);
+      if (bytes_sent < 0) {
+        perror("send");
+        close(client_fd);
         client_fd = accept(server_fd, NULL, NULL);
-      } else {
-        // send the last value to the client
-        ssize_t bytes_sent = send(client_fd, out, len, 0);
-        if (bytes_sent < 0) {
-          perror("send");
-          close(client_fd);
-          client_fd = accept(server_fd, NULL, NULL);
-          continue;
-        }
+        continue;
       }
-
-      usleep(1000000); // sleep for 1 second before next read
     }
   }
+
+  usleep(1000000); // sleep for 1 second before next read
 
   close(client_fd);
 
