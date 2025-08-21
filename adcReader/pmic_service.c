@@ -160,7 +160,7 @@ int main(int argc, char *argv[]) {
   while (!shouldTerminate) {
 
     char result[MAX_STRING];
-    unsigned ret = gencmd(mb, "pmic get", result, sizeof(result));
+    unsigned ret = gencmd(mb, "pmic_read_adc", result, sizeof(result));
     log_message(log_file, result);
 
     measurement_t currents[MAX_RAILS];
