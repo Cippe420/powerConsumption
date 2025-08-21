@@ -214,9 +214,9 @@ int main(int argc, char *argv[]) {
         continue;
       }
     }
-  }
 
-  usleep(1000000); // sleep for 1 second before next read
+    usleep(1000000); // sleep for 100ms before next read
+  }
 
   close(client_fd);
 
