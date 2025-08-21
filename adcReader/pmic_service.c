@@ -184,6 +184,7 @@ int main(int argc, char *argv[]) {
         voltages[n_voltages].value = rail_value;
         n_voltages++;
       }
+      log_message(log_file, "rail: %s, value: %.3f", rail_name, rail_value);
       line = strtok(NULL, "\n");
     }
 
