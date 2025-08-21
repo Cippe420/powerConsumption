@@ -173,12 +173,12 @@ int main(int argc, char *argv[]) {
     double rail_value;
 
     while (line) {
-      if (sscanf(line, " %31[^_]_A current%*[^=]=%lfA", rail_name,
+      if (sscanf(line, " %31[^ ]_A current%*[^=]=%lfA", rail_name,
                  &rail_value) == 2) {
         strcpy(currents[n_currents].name, rail_name);
         currents[n_currents].value = rail_value;
         n_currents++;
-      } else if (sscanf(line, " %31[^_]_V voltage%*[^=]=%lfV", rail_name,
+      } else if (sscanf(line, " %31[^ ]_V volt%*[^=]=%lfV", rail_name,
                         &rail_value) == 2) {
         strcpy(voltages[n_voltages].name, rail_name);
         voltages[n_voltages].value = rail_value;
