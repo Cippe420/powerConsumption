@@ -173,18 +173,20 @@ int main(int argc, char *argv[]) {
     double rail_value;
 
     while (line) {
-      if (sscanf(line, " %31[^ ]_A current%*[^=]=%lfA", rail_name,
-                 &rail_value) == 2) {
-        strcpy(currents[n_currents].name, rail_name);
-        currents[n_currents].value = rail_value;
-        n_currents++;
-      } else if (sscanf(line, " %31[^ ]_V volt%*[^=]=%lfV", rail_name,
-                        &rail_value) == 2) {
-        strcpy(voltages[n_voltages].name, rail_name);
-        voltages[n_voltages].value = rail_value;
-        n_voltages++;
+
+      int n =
+          sscanf(line, " %31[^ ]_A current(%*d)=%lfA", rail_name, &rail_value);
+      if (n == 2) {
+        printf("MATCH corrente: rail=%s, value=%.6f\n", rail_name, rail_value);
+      } else {
+        n = sscanf(line, " %31[^ ]_V volt(%*d)=%lfV", rail_name, &rail_value);
+        if (n == 2) {
+          printf("MATCH tensione: rail=%s, value=%.6f\n", rail_name,
+                 rail_value);
+        } else {
+          printf("NO MATCH: [%s]\n", line);
+        }
       }
-      log_message(log_file, "Sul rail: %s, value: %.3f", rail_name, rail_value);
       line = strtok(NULL, "\n");
     }
 
