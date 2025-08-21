@@ -193,6 +193,10 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < MAX_RAILS; i++) {
       double P = voltages[i].value * currents[i].value;
       if (voltages[i].value > 0 && currents[i].value > 0) {
+        log_message(log_file,
+                    "Rail: %s, Voltage: %.3f V, Current: %.3f A, Power: "
+                    "%.3f W",
+                    voltages[i].name, voltages[i].value, currents[i].value, P);
         total_current += currents[i].value;
         total_power += P;
       }
