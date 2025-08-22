@@ -175,18 +175,15 @@ int main(int argc, char *argv[]) {
 
     while (line) {
       char *trimmed = line;
-      while (*trimmed == ' ' || *trimmed == '\t')
-        trimmed++; // trim leading spaces
       log_message(log_file, "Processing line: [%s]", line);
-
-      int n = sscanf(trimmed, " %31[^ ]_A current(%*d)=%lfA", rail_name,
-                     &rail_value);
+      int n = sscanf(trimmed, "^\s*([A-Z0-9_]+)_A\s+current\(\d+\)=(\d+\.\d+)A",
+                     rail_name, &rail_value);
       if (n == 2) {
         log_message(log_file, "MATCH corrente: rail=%s, value=%.6f\n",
                     rail_name, rail_value);
       } else {
-        n = sscanf(trimmed, " %31[^ ]_V volt(%*d)=%lfV", rail_name,
-                   &rail_value);
+        n = sscanf(trimmed, "^\s*([A-Z0-9_]+)_V\s+volt\(\d+\)=(\d+\.\d+)V",
+                   rail_name, &rail_value);
         if (n == 2) {
           log_message(log_file, "MATCH tensione: rail=%s, value=%.6f\n",
                       rail_name, rail_value);
