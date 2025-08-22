@@ -2,6 +2,7 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <netinet/in.h>
+#include <regex.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -12,7 +13,6 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-
 #define LOGFILE "/var/log/pmic_service.log"
 #define DEVICE_FILE_NAME "/dev/vcio"
 #define SOCKET_PATH "/run/pmic.sock"
@@ -101,6 +101,33 @@ static unsigned gencmd(int file_desc, const char *command, char *result,
 }
 
 static volatile int shouldTerminate = 0;
+typedef struct {
+  char name[32];
+  double current;
+  double voltage;
+} Rail;
+
+int find_or_create_rail(Rail rails[], int *count, const char *name) {
+  for (int i = 0; i < *count; i++) {
+    if (strcmp(rails[i].name, name) == 0) {
+      return i; // rail già presente
+    }
+  }
+  // nuovo rail
+  strncpy(rails[*count].name, name, sizeof(rails[*count].name) - 1);
+  rails[*count].current = 0.0;
+  rails[*count].voltage = 0.0;
+  (*count)++;
+  return *count - 1;
+}
+
+void strip_suffix(char *name) {
+  size_t len = strlen(name);
+  if (len > 2 && (strcmp(name + len - 2, "_A") == 0 ||
+                  strcmp(name + len - 2, "_V") == 0)) {
+    name[len - 2] = '\0';
+  }
+}
 
 void sigint_handler(int sig) {
   shouldTerminate = 1;
@@ -108,11 +135,6 @@ void sigint_handler(int sig) {
   mbox_close(mb);
   exit(0);
 }
-
-typedef struct {
-  char name[32];
-  double value;
-} measurement_t;
 
 int main(int argc, char *argv[]) {
 
@@ -154,6 +176,8 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
+  Rail rails[MAX_RAILS];
+  int rail_count = 0;
   client_fd = accept(server_fd, NULL, NULL);
   log_message(log_file, "PMIC service started, waiting for connections...");
 
@@ -162,53 +186,41 @@ int main(int argc, char *argv[]) {
     char result[MAX_STRING];
     unsigned ret = gencmd(mb, "pmic_read_adc", result, sizeof(result));
     log_message(log_file, result);
-
-    measurement_t currents[MAX_RAILS];
-    measurement_t voltages[MAX_RAILS];
-
     int n_currents = 0;
     int n_voltages = 0;
     char *line = strtok(result, "\n");
 
-    char rail_name[32];
-    double rail_value;
-
     while (line) {
-      char *trimmed = line;
+
+      char name[32];
+      double value;
       log_message(log_file, "Processing line: [%s]", line);
-      int n = sscanf(trimmed, "^\s*([A-Z0-9_]+)_A\s+current\(\d+\)=(\d+\.\d+)A",
-                     rail_name, &rail_value);
-      if (n == 2) {
-        log_message(log_file, "MATCH corrente: rail=%s, value=%.6f\n",
-                    rail_name, rail_value);
-      } else {
-        n = sscanf(trimmed, "^\s*([A-Z0-9_]+)_V\s+volt\(\d+\)=(\d+\.\d+)V",
-                   rail_name, &rail_value);
-        if (n == 2) {
-          log_message(log_file, "MATCH tensione: rail=%s, value=%.6f\n",
-                      rail_name, rail_value);
-        } else {
-          log_message(log_file, "NO MATCH: [%s]\n", trimmed);
-        }
+      if (sscanf(line, " %31s current(%*d)=%lfA", name, &value) == 2) {
+        strip_suffix(name);
+        int idx = find_or_create_rail(rails, &rail_count, name);
+        rails[idx].current = value;
+        log_message(log_file, "Found rail Current: %s, Current: %.3f A",
+                    rails[idx].name, rails[idx].current);
       }
+
+      // match tensione
+      else if (sscanf(line, " %31s volt(%*d)=%lfV", name, &value) == 2) {
+        strip_suffix(name);
+        int idx = find_or_create_rail(rails, &rail_count, name);
+        rails[idx].voltage = value;
+        log_message(log_file, "Found rail Voltage: %s, Voltage: %.3f V",
+                    rails[idx].name, rails[idx].voltage);
+      }
+
       line = strtok(NULL, "\n");
     }
 
     double total_current = 0.0;
     double total_power = 0.0;
-
-    for (int i = 0; i < MAX_RAILS; i++) {
-      double P = voltages[i].value * currents[i].value;
-      if (voltages[i].value > 0 && currents[i].value > 0) {
-        log_message(log_file,
-                    "Rail: %s, Voltage: %.3f V, Current: %.3f A, Power: "
-                    "%.3f W",
-                    voltages[i].name, voltages[i].value, currents[i].value, P);
-        total_current += currents[i].value;
-        total_power += P;
-      }
+    for (int i = 0; i < rail_count; i++) {
+      total_current += rails[i].current;
+      total_power += rails[i].current * rails[i].voltage;
     }
-
     char out[128];
     int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
                        total_current, total_power);
