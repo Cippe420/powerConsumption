@@ -185,7 +185,6 @@ int main(int argc, char *argv[]) {
 
     char result[MAX_STRING];
     unsigned ret = gencmd(mb, "pmic_read_adc", result, sizeof(result));
-    log_message(log_file, result);
     int n_currents = 0;
     int n_voltages = 0;
     char *line = strtok(result, "\n");
@@ -194,22 +193,16 @@ int main(int argc, char *argv[]) {
 
       char name[32];
       double value;
-      log_message(log_file, "Processing line: [%s]", line);
       if (sscanf(line, " %31s current(%*d)=%lfA", name, &value) == 2) {
         strip_suffix(name);
         int idx = find_or_create_rail(rails, &rail_count, name);
         rails[idx].current = value;
-        log_message(log_file, "Found rail Current: %s, Current: %.3f A",
-                    rails[idx].name, rails[idx].current);
       }
 
-      // match tensione
       else if (sscanf(line, " %31s volt(%*d)=%lfV", name, &value) == 2) {
         strip_suffix(name);
         int idx = find_or_create_rail(rails, &rail_count, name);
         rails[idx].voltage = value;
-        log_message(log_file, "Found rail Voltage: %s, Voltage: %.3f V",
-                    rails[idx].name, rails[idx].voltage);
       }
 
       line = strtok(NULL, "\n");
@@ -220,6 +213,10 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < rail_count; i++) {
       total_current += rails[i].current;
       total_power += rails[i].current * rails[i].voltage;
+      log_message(log_file,
+                  "Rail: %s, Current: %.3f A, Voltage: %.3f V, Power: %.3f W",
+                  rails[i].name, rails[i].current, rails[i].voltage,
+                  rails[i].current * rails[i].voltage);
     }
     char out[128];
     int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
