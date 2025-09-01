@@ -222,6 +222,8 @@ int main(int argc, char *argv[]) {
     int len = snprintf(out, sizeof(out), "Current: %.3f A, Power: %.3f W\n",
                        total_current, total_power);
 
+    total_power = (total_power * 1.1451) + 0.5879;
+
     if (client_fd < 0) {
       client_fd = accept(server_fd, NULL, NULL);
     } else {
