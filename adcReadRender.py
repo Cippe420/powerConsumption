@@ -10,7 +10,7 @@ import time
 HOST = "10.71.214.12"  # IP del Raspberry o del server
 PORT = 12345  # Porta del servizio TCP
 
-DURATA = 100  # secondi di raccolta dati
+DURATA = 10  # secondi di raccolta dati
 
 # Liste per accumulare i valori
 corrente = []
